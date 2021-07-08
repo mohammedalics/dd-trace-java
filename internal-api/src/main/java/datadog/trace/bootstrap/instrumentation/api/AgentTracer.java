@@ -52,7 +52,7 @@ public class AgentTracer {
     return get().activeSpan();
   }
 
-  public static TraceScope activeScope() {
+  public static AgentScope activeScope() {
     return get().activeScope();
   }
 
@@ -106,7 +106,7 @@ public class AgentTracer {
 
     AgentSpan activeSpan();
 
-    TraceScope activeScope();
+    AgentScope activeScope();
 
     AgentPropagation propagate();
 
@@ -199,7 +199,7 @@ public class AgentTracer {
     }
 
     @Override
-    public TraceScope activeScope() {
+    public AgentScope activeScope() {
       return null;
     }
 

@@ -11,7 +11,7 @@ public interface AgentScopeManager {
 
   AgentScope activate(AgentSpan span, ScopeSource source, boolean isAsyncPropagating);
 
-  TraceScope active();
+  AgentScope active();
 
   AgentSpan activeSpan();
 

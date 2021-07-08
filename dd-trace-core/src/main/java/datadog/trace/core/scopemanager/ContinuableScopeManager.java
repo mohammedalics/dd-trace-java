@@ -131,7 +131,7 @@ public class ContinuableScopeManager implements AgentScopeManager {
   }
 
   @Override
-  public TraceScope active() {
+  public AgentScope active() {
     return scopeStack().top();
   }
 

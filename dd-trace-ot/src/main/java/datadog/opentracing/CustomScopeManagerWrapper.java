@@ -54,7 +54,7 @@ class CustomScopeManagerWrapper implements AgentScopeManager {
   }
 
   @Override
-  public TraceScope active() {
+  public AgentScope active() {
     return new CustomScopeManagerScope(delegate.active());
   }
 

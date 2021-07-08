@@ -136,7 +136,7 @@ public class CoreTracer implements AgentTracer.TracerAPI {
 
   @Override
   public TraceScope.Continuation capture() {
-    final TraceScope activeScope = activeScope();
+    final AgentScope activeScope = activeScope();
 
     return activeScope == null ? null : activeScope.capture();
   }
@@ -561,7 +561,7 @@ public class CoreTracer implements AgentTracer.TracerAPI {
   }
 
   @Override
-  public TraceScope activeScope() {
+  public AgentScope activeScope() {
     return scopeManager.active();
   }
 
