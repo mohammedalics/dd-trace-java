@@ -68,7 +68,7 @@ public class ReportServiceImpl implements ReportService {
     List<Object> oldEvents;
     synchronized (this) {
       oldEvents = events;
-      if (oldEvents.size() == 0) {
+      if (oldEvents.isEmpty()) {
         return;
       }
       events = new ArrayList<>();

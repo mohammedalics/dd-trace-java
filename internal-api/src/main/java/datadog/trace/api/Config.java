@@ -67,6 +67,7 @@ import static datadog.trace.api.DDTags.SERVICE_TAG;
 import static datadog.trace.api.IdGenerationStrategy.RANDOM;
 import static datadog.trace.api.Platform.isJavaVersionAtLeast;
 import static datadog.trace.api.config.AppSecConfig.APPSEC_ENABLED;
+import static datadog.trace.api.config.AppSecConfig.APPSEC_INSTANT_REPORT;
 import static datadog.trace.api.config.GeneralConfig.API_KEY;
 import static datadog.trace.api.config.GeneralConfig.API_KEY_FILE;
 import static datadog.trace.api.config.GeneralConfig.CONFIGURATION_FILE;
@@ -382,6 +383,7 @@ public class Config {
   private final boolean profilingHotspotsEnabled;
 
   private final boolean appSecEnabled;
+  private final boolean appSecInstantReportStrategy;
 
   private final boolean kafkaClientPropagationEnabled;
   private final Set<String> kafkaClientPropagationDisabledTopics;
@@ -794,6 +796,7 @@ public class Config {
     profilingHotspotsEnabled = configProvider.getBoolean(PROFILING_HOTSPOTS_ENABLED, false);
 
     appSecEnabled = configProvider.getBoolean(APPSEC_ENABLED, DEFAULT_APPSEC_ENABLED);
+    appSecInstantReportStrategy = configProvider.getBoolean(APPSEC_INSTANT_REPORT, false);
 
     jdbcPreparedStatementClassName =
         configProvider.getString(JDBC_PREPARED_STATEMENT_CLASS_NAME, "");
@@ -1244,6 +1247,10 @@ public class Config {
 
   public boolean isAppSecEnabled() {
     return appSecEnabled;
+  }
+
+  public boolean isAppSecInstantReportStrategy() {
+    return appSecInstantReportStrategy;
   }
 
   public boolean isKafkaClientPropagationEnabled() {

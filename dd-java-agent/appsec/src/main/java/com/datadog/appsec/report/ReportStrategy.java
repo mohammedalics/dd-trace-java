@@ -77,4 +77,21 @@ public interface ReportStrategy {
       }
     }
   }
+
+  /**
+   * This strategy used for testing purpose only
+   * It enforce send AppSec reports instantly without
+   * batching or timeout
+   */
+  class InstantReport implements ReportStrategy {
+    @Override
+    public boolean shouldFlush() {
+      return true;
+    }
+
+    @Override
+    public boolean shouldFlush(@Nonnull Attack010 attack) {
+      return true;
+    }
+  }
 }

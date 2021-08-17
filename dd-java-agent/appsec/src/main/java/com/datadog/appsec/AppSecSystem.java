@@ -44,6 +44,11 @@ public class AppSecSystem {
     AgentTaskScheduler taskScheduler =
         new AgentTaskScheduler(AgentThreadFactory.AgentThread.APPSEC_HTTP_DISPATCHER);
     AppSecApi api = new AppSecApi(sco.monitoring, sco.agentUrl, sco.okHttpClient, taskScheduler);
+
+    ReportStrategy reportStrategy = config.isAppSecInstantReportStrategy() ?
+        new ReportStrategy.InstantReport() :
+        new ReportStrategy.Default(JvmTime.Default.INSTANCE);
+
     ReportService reportService =
         new ReportServiceImpl(
             api,
